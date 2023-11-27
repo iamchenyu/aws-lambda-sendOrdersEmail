@@ -3,6 +3,7 @@
     "@aws-sdk/client-lambda": "^3.458.0",
     "@sendgrid/mail": "^7.7.0",
     "aws-sdk": "^2.1501.0",
+    "dotenv": "^16.3.1",
     "nodemon": "^3.0.1"
   }
 }
