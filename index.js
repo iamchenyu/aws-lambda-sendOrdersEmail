@@ -24,10 +24,10 @@ exports.handler = async (event) => {
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
 
   // Send emails
-  console.log("orders: ", orders);
+  console.log("[ORDERS]: ", orders);
 
   const msg = {
-    from: "hellochenyuw@gmail.com",
+    from: "adhc@ccacc-dc.org",
     subject: "Daily Orders of CCACC Meal Delivery",
     templateId: "d-a18a0b7606b245f390290649839a88c7",
     dynamic_template_data: {
@@ -38,26 +38,33 @@ exports.handler = async (event) => {
     personalizations: [
       {
         to: [
-          { email: "hellochenyuw@gmail.com" },
-          { email: "jadeyw7@gmail.com" },
+          { email: "jia.yu@ccacc-dc.org" },
+          { email: "catherine.shine@ccacc-dc.org" },
+          { email: "huaiguo.guan@ccacc-dc.org" },
         ],
-
-        cc: [{ email: "chenyu.wang@ccacc-dc.org" }],
+        cc: [
+          { email: "steve.lin@ccacc-dc.org" },
+          { email: "wanchang.chen@ccacc-dc.org" },
+          { email: "PaoYu.Tsai@ccacc-dc.org" },
+          { email: "Jackie.Yu@ccacc-dc.org" },
+          { email: "weihong.ran@ccacc-dc.org " },
+          { email: "chenyu.wang@ccacc-dc.org" },
+        ],
       },
     ],
   };
 
-  console.log("msg: ", msg);
+  console.log("[MSG]: ", msg);
 
   try {
     await sgMail.send(msg);
-    console.log("Email sent successfully");
+    console.log("[SUCCESS]: Email sent successfully");
     return {
       statusCode: 200,
       body: "Email sent successfully",
     };
   } catch (err) {
-    console.error(err);
+    console.log(`[ERROR]: ${err}`);
     return {
       statusCode: 400,
       body: err,
